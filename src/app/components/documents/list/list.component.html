@@ -1,0 +1,31 @@
+<h3>Document List</h3>
+<hr>
+<div class="row">
+  <div class="col-md-6">
+    <app-search-bar></app-search-bar>
+  </div>
+  <div class="col-md-6">
+    <div class="form-inline my-2 my-lg-0">
+      <button type="button" class="btn btn-outline-danger" (click)="asc=!asc">Order By Date</button>
+    </div>
+  </div>
+</div>
+<br>
+<div class="card-deck">
+  <div class="card" *ngFor="let document of _ds.documents | orderBy:!asc; let i = index">
+    <div class="card-header text-right">
+      <a [routerLink] = "['/documents/edit', i]" class="btn btn-sm btn-outline-info">Editar</a>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{ document.name }}</h5>
+      <p class="card-text text-justify">{{ document.description }}</p>
+    </div>
+    <div class="card-footer">
+      <p>
+        <small class="text-muted"><i class="fa fa-user"></i> {{ document.author }}</small> |
+        <small class="text-muted"><i class="fa fa-calendar"></i> {{ document.editDate | date }}</small>
+      </p>
+    </div>
+  </div>
+</div>
+
