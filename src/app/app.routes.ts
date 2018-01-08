@@ -14,6 +14,7 @@ const APP_ROUTES: Routes = [
     children: [
       { path: 'list', component: ListComponent },
       { path: 'search/:text', component: SearchComponent },
+      { path: 'edit', component: EditComponent },
       { path: 'edit/:id', component: EditComponent },
       { path: '**', pathMatch: 'full', redirectTo: 'list'}
     ]

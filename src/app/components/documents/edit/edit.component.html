@@ -1,3 +1,23 @@
-<p>
-  edit works!
-</p>
+<h3>Documents Management Editor</h3>
+<hr>
+<form>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Name</label>
+      <input class="form-control"  placeholder="Document Name">
+    </div>
+    <div class="form-group col-md-6">
+      <label>Author</label>
+      <input class="form-control" placeholder="Document Author">
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Description</label>
+    <input class="form-control" placeholder="Description">
+  </div>
+  <div class="form-group">
+    <label>Content</label>
+    <textarea [froalaEditor] class="form-control"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Sign in</button>
+</form>

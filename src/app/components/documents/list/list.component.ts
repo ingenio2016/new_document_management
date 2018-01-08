@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DocumentService } from "../../../providers/document.service"
+import { DocumentService } from '../../../providers/document.service';
 
 @Component({
   selector: 'app-list',

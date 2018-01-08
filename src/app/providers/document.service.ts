@@ -25,39 +25,43 @@ export class DocumentService {
       });
   }
 
-  searchDocument(term:string) {
+  searchDocument( term: string ) {
     this.loadMessages();
-    let documentsArray:any[] = [];
+    let documentsArray: any[] = [];
     term = term.toLowerCase();
-    if(term == ""){
+    if (term === '') {
       documentsArray = this.documents;
-    }else{
-      for(let document of this.documents){
-        let name = document.name.toLowerCase();
-        if(name.indexOf( term ) >= 0){
+    }else {
+      for (const document of this.documents){
+        const name = document.name.toLowerCase();
+        if ( name.indexOf( term ) >= 0) {
           documentsArray.push(document);
         }
 
-        let description = document.description.toLowerCase();
-        if(description.indexOf( term ) >= 0){
+        const description = document.description.toLowerCase();
+        if ( description.indexOf( term ) >= 0) {
           documentsArray.push(document);
         }
 
-        let author = document.author.toLowerCase();
-        if(author.indexOf( term ) >= 0){
+        const author = document.author.toLowerCase();
+        if ( author.indexOf( term ) >= 0) {
           documentsArray.push(document);
         }
 
-        let content = document.content.toLowerCase();
-        if(content.indexOf( term ) >= 0){
+        const content = document.content.toLowerCase();
+        if ( content.indexOf( term ) >= 0) {
           documentsArray.push(document);
         }
       }
     }
-    if(documentsArray.length == 0){
+    if (documentsArray.length === 0){
       documentsArray = this.documents;
     }
     this.isSearch = true;
     return documentsArray;
+  }
+
+  getDocument(id: number) {
+    return this.documents[id];
   }
 }
