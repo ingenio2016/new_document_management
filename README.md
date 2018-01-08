@@ -1,27 +1,27 @@
-#Steps to run the application
+# Documents
 
-1. Necesary installs
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.4.
 
-  install node version 6.11.0 or higher and npm version 3.10.10 or higher from https://nodejs.org/es/download/
+## Development server
 
-2. Set up the Development Environment
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-  npm install -g @angular/cli
+## Code scaffolding
 
-3. Create a Folder and clone the project from GitHub
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-  git clone https://github.com/ingenio2016/new_document_management.git
+## Build
 
-4. Navigate from the folder project
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-  cd new_document_management
+## Running unit tests
 
-5. run yarn
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-6. Download the Environment files from https://drive.google.com/drive/folders/1A4cJh97Tp_X4QpNt_1VPKKE_0yviMPEL?usp=sharing
+## Running end-to-end tests
 
-7. Replace the environment files on the path: src\environments
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-8. run ng serve
+## Further help
 
-9. open http://localhost:4200
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
