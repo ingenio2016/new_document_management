@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
+import {forEach} from '@angular/router/src/utils/collection';
 
 @Injectable()
 export class DocumentService {
   // FireBase Collections
   documentsCollection: AngularFirestoreCollection<any>;
   documentsObs: Observable<any>;
+  documentId = '';
   private documents: any[] = [];
   private isSearch = false;
   constructor( private db: AngularFirestore ) {
@@ -15,7 +17,7 @@ export class DocumentService {
     this.documentsObs = this.documentsCollection.valueChanges();
   }
   loadMessages() {
-    return this.documentsCollection.valueChanges()
+    return this.documentsObs
       .map((docs: any[]) => {
         this.documents = [];
         for (const doc of docs){
@@ -61,7 +63,54 @@ export class DocumentService {
     return documentsArray;
   }
 
-  getDocument(id: number) {
-    return this.documents[id];
+  getDocument(id: string) {
+    for (const document of this.documents) {
+      if ( document.id === id ) {
+        return document;
+      }
+    }
+  }
+
+  saveDocument( forma: any ): Promise<any> {
+    const promise = new Promise( (resolve, reject) => {
+      this.documentId = '';
+      this.documentsCollection.add( forma )
+        .then((documentRef) => {
+          this.documentsCollection.doc(documentRef.id).update({
+            id: documentRef.id,
+            date: new Date(),
+            editDate: new Date()
+          }).then((data) => {
+            resolve(documentRef.id);
+          });
+        }).catch((err) => {
+        reject(err);
+      });
+    });
+    return promise;
+  }
+
+  updateDocument( forma: any ): Promise<any> {
+    const promise = new Promise( (resolve, reject) => {
+      this.documentsCollection.doc(forma.id).update({
+        name: forma.name,
+        author: forma.author,
+        description: forma.description,
+        content: forma.content,
+        editDate: new Date()
+      }).then((data) => {
+        resolve({data: data});
+      });
+    });
+    return promise;
+  }
+
+  deleteDocument( documentId: any ): Promise<any> {
+    const promise = new Promise( (resolve, reject) => {
+      this.documentsCollection.doc(documentId).delete().then(() => {
+        resolve(true);
+      });
+    });
+    return promise;
   }
 }

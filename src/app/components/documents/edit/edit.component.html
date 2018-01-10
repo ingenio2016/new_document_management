@@ -1,23 +1,53 @@
 <h3>Documents Management Editor</h3>
 <hr>
-<form>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label>Name</label>
-      <input class="form-control"  placeholder="Document Name">
-    </div>
-    <div class="form-group col-md-6">
-      <label>Author</label>
-      <input class="form-control" placeholder="Document Author">
-    </div>
+<form [formGroup]="forma" novalidate="novalidate">
+  <div class="form-group">
+    <input class="form-control"
+           type="hidden"
+           name="id"
+           formControlName="id">
+  </div>
+  <div class="form-group">
+    <label>Name</label>
+    <input class="form-control"
+           name="name"
+           formControlName="name"
+           placeholder="Document Name">
+  </div>
+  <div class="form-group">
+    <label>Author</label>
+    <input class="form-control"
+           name="author"
+           formControlName="author"
+           placeholder="Document Author">
   </div>
   <div class="form-group">
     <label>Description</label>
-    <input class="form-control" placeholder="Description">
+    <input class="form-control"
+           name="description"
+           formControlName="description"
+           placeholder="Description">
   </div>
   <div class="form-group">
     <label>Content</label>
-    <textarea [froalaEditor] class="form-control"></textarea>
+    <textarea [froalaEditor]
+              name="content"
+              class="form-control"
+              formControlName="content">
+    </textarea>
   </div>
-  <button type="submit" class="btn btn-primary">Sign in</button>
+  <div class="form-group hidden">
+  <input class="form-control"
+         type="hidden"
+         name="date"
+         formControlName="date">
+</div>
+  <div class="form-group hidden">
+    <input class="form-control"
+           type="hidden"
+           name="editDate"
+           formControlName="editDate">
+  </div>
+  <button class="btn btn-outline-info" (click)="discard()">Descartar</button>
+  <button class="btn btn-outline-danger" (click)="delete()">Eliminar</button>
 </form>

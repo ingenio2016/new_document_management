@@ -3,6 +3,8 @@
 <div class="row">
   <div class="col-md-6">
     <app-search-bar></app-search-bar>
+    <br>
+    <a [routerLink] = "['/documents/edit']" class="btn btn-sm btn-outline-primary">Nuevo</a>
   </div>
   <div class="col-md-6">
     <div class="form-inline my-2 my-lg-0">
@@ -12,9 +14,9 @@
 </div>
 <br>
 <div class="card-deck">
-  <div class="card" *ngFor="let document of _ds.documents | orderBy:!asc; let i = index">
+  <div class="card col-md-6" *ngFor="let document of _ds.documents | orderBy:!asc;">
     <div class="card-header text-right">
-      <a [routerLink] = "['/documents/edit', i]" class="btn btn-sm btn-outline-info">Editar</a>
+      <a [routerLink] = "['/documents/edit', document.id]" class="btn btn-sm btn-outline-info">Editar</a>
     </div>
     <div class="card-body">
       <h5 class="card-title">{{ document.name }}</h5>
