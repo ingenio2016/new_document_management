@@ -1,5 +1,4 @@
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
 import { DocumentsComponent } from './components/documents/documents.component';
 // Child Components
 import { ListComponent } from './components/documents/list/list.component';
@@ -8,7 +7,6 @@ import { EditComponent } from './components/documents/edit/edit.component';
 
 
 const APP_ROUTES: Routes = [
-  { path: 'home', component: HomeComponent},
   { path: 'documents',
     component : DocumentsComponent,
     children: [
@@ -19,7 +17,7 @@ const APP_ROUTES: Routes = [
       { path: '**', pathMatch: 'full', redirectTo: 'list'}
     ]
   },
-  { path: '**', pathMatch: 'full', redirectTo: 'home'}
+  { path: '**', pathMatch: 'full', redirectTo: 'documents'}
 ];
 
-export const APP_ROUTING = RouterModule.forRoot(APP_ROUTES, { useHash:true });
+export const APP_ROUTING = RouterModule.forRoot(APP_ROUTES, { useHash: true });

@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
-import {forEach} from '@angular/router/src/utils/collection';
 
 @Injectable()
 export class DocumentService {
-  // FireBase Collections
+  // documents Collections
   documentsCollection: AngularFirestoreCollection<any>;
+  // documents Observable
   documentsObs: Observable<any>;
   documentId = '';
   private documents: any[] = [];
@@ -16,6 +16,11 @@ export class DocumentService {
       .collection<any>('documents', ref => ref.orderBy('date', 'desc'));
     this.documentsObs = this.documentsCollection.valueChanges();
   }
+
+  changeSearchState() {
+    this.isSearch = false;
+  }
+
   loadMessages() {
     return this.documentsObs
       .map((docs: any[]) => {

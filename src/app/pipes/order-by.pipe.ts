@@ -10,22 +10,22 @@ export class OrderByPipe implements PipeTransform {
       let date1 = new Date(a.editDate);
       let date2 = new Date(b.editDate);
 
-      if(args){
+      if (args) {
         if (date1 > date2) {
           return 1;
-        } else if (date1 < date2) {
-          return -1;
-        } else {
-          return 0;
         }
-      } else{
+        if (date1 < date2) {
+          return -1;
+        }
+        return 0;
+      } else {
         if (date1 < date2) {
           return 1;
-        } else if (date1 > date2) {
-          return -1;
-        } else {
-          return 0;
         }
+        if (date1 > date2) {
+          return -1;
+        }
+        return 0;
       }
     });
     return newVal;

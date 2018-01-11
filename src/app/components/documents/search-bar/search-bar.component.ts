@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { DocumentService } from "../../../providers/document.service"
+import { DocumentService } from '../../../providers/document.service';
+
 
 @Component({
   selector: 'app-search-bar',
@@ -9,12 +10,12 @@ import { DocumentService } from "../../../providers/document.service"
 })
 export class SearchBarComponent implements OnInit {
 
-  constructor( private _router:Router, private _documentService: DocumentService ) { }
+  constructor( private _router: Router, private _documentService: DocumentService ) { }
 
   ngOnInit() {
   }
 
-  searchDocument(text:string){
+  searchDocument(text: string) {
     this._router.navigate( ['documents/search', text] );
   }
 

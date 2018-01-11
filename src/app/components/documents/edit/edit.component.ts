@@ -17,11 +17,11 @@ export class EditComponent implements OnInit, OnDestroy {
 
   // document Object to FormControls
   document: Object = {
-    id: null,
-    name: null,
-    description: null,
-    author: null,
-    content: null,
+    id: '',
+    name: '',
+    description: '',
+    author: '',
+    content: '',
     date: new Date(),
     editDate: new Date()
   };

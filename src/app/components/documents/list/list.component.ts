@@ -12,6 +12,7 @@ export class ListComponent implements OnInit {
   private asc = true;
 
   constructor( private _ds: DocumentService ) {
+    this._ds.changeSearchState();
   }
 
   ngOnInit() {
